@@ -1,4 +1,4 @@
-# Telegram B**o**t test
+# Telegram B**o**t test project
 ## Technologies used
 - Spring Boot: main framework (gradle builder)
 - Postgresql main DB
