@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: TelegramBotSpring
+    
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  liquibase:
+    change-log: classpath:db.changelog/db.changelog-master.yaml
+    clear-checksums: true
+
+logging:
+  file:
+    path: logs
+    name: logs/app.log
+  level:
+    liquibase: info
+    root: warn
+    com.example.TelegramBotSpring: info
+
+telegram:
+  data:
+    token: token
+    username: dummy

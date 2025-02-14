@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=telegramBot
+    ports:
+      - "5432:5432"
+
+  app:
+    ports:
+      - "8080:8080"
+    build: .
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/telegramBot
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - db
